@@ -79,6 +79,9 @@ def estimate_execution_price(bars: list[MinuteBar], order_size: int) -> float:
 
 
 def summarize_execution(bars: list[MinuteBar], order_size: int, side: str) -> dict[str, float | int | str]:
+    if side not in {"buy", "sell"}:
+        raise ValueError("Side must be 'buy' or 'sell'.")
+
     arrival_price = bars[0].price
     execution_price = estimate_execution_price(bars, order_size)
     direction = 1 if side == "buy" else -1

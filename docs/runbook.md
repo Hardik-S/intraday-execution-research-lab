@@ -16,6 +16,8 @@ The first automation pass creates a minimal, reviewable execution-research artif
 
 The participation-rate field divides the synthetic order size by displayed fixture volume. It is included so reviewers can see whether the sample order is small enough for the toy execution model to be plausible, rather than accepting a shortfall number without any volume context.
 
+The summary function validates `side` even though the CLI already constrains it. That duplicate guard is intentional: future notebooks, tests, or API wrappers may call the Python function directly, and this proof repo should fail closed instead of treating an unsupported value as a sell order.
+
 ## Verification
 
 Run from the repository root:

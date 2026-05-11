@@ -28,6 +28,10 @@ class ExecutionLabTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             estimate_execution_price(self.bars, 0)
 
+    def test_summary_rejects_unknown_order_side(self) -> None:
+        with self.assertRaises(ValueError):
+            summarize_execution(self.bars, order_size=1200, side="hold")
+
 
 if __name__ == "__main__":
     unittest.main()

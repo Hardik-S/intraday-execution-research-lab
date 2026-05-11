@@ -9,6 +9,7 @@ This repository turns a resume claim about SPY/QQQ intraday execution research i
 - Synthetic minute bars live in `data/synthetic_spy_minutes.csv`.
 - The model in `src/execution_lab.py` computes TWAP, VWAP, implementation shortfall, and participation rate.
 - Unit tests in `tests/test_execution_lab.py` validate the calculations against known values.
+- The core summarizer rejects unsupported order sides so scripted checks cannot silently mislabel trade direction.
 - `docs/runbook.md` explains assumptions, rejected approaches, and verification commands.
 
 ## Boundary Decisions
