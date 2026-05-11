@@ -22,6 +22,7 @@ class ExecutionLabTests(unittest.TestCase):
         self.assertEqual(summary["symbol"], "SPY")
         self.assertEqual(summary["order_size"], 1200)
         self.assertGreater(summary["implementation_shortfall_bps"], 0)
+        self.assertAlmostEqual(summary["participation_rate_pct"], 3.5294)
 
     def test_order_size_must_be_positive(self) -> None:
         with self.assertRaises(ValueError):

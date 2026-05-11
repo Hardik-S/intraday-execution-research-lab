@@ -14,6 +14,8 @@ The first automation pass creates a minimal, reviewable execution-research artif
 
 `twap` is the arithmetic mean of minute prices. `vwap` weights each minute price by displayed synthetic volume. The execution-price approximation applies a simple participation schedule across the observed bars. Implementation shortfall compares the estimated execution price with the arrival price and reports basis points.
 
+The participation-rate field divides the synthetic order size by displayed fixture volume. It is included so reviewers can see whether the sample order is small enough for the toy execution model to be plausible, rather than accepting a shortfall number without any volume context.
+
 ## Verification
 
 Run from the repository root:

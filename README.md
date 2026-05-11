@@ -7,7 +7,7 @@ Synthetic intraday execution research package for demonstrating TWAP/VWAP analys
 This repository turns a resume claim about SPY/QQQ intraday execution research into a reproducible artifact:
 
 - Synthetic minute bars live in `data/synthetic_spy_minutes.csv`.
-- The model in `src/execution_lab.py` computes TWAP, VWAP, and implementation shortfall.
+- The model in `src/execution_lab.py` computes TWAP, VWAP, implementation shortfall, and participation rate.
 - Unit tests in `tests/test_execution_lab.py` validate the calculations against known values.
 - `docs/runbook.md` explains assumptions, rejected approaches, and verification commands.
 
@@ -24,7 +24,7 @@ python -m unittest discover -s tests
 python src\execution_lab.py data\synthetic_spy_minutes.csv --order-size 1200 --side buy
 ```
 
-Expected output is a JSON summary with TWAP, VWAP, arrival price, execution price, and shortfall in basis points.
+Expected output is a JSON summary with TWAP, VWAP, arrival price, execution price, shortfall in basis points, and displayed-volume participation rate.
 
 ## File Structure
 

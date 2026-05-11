@@ -42,6 +42,15 @@ def vwap(bars: list[MinuteBar]) -> float:
     return sum(bar.price * bar.volume for bar in bars) / total_volume
 
 
+def participation_rate(order_size: int, bars: list[MinuteBar]) -> float:
+    if order_size <= 0:
+        raise ValueError("Order size must be positive.")
+    total_volume = sum(bar.volume for bar in bars)
+    if total_volume <= 0:
+        raise ValueError("Total volume must be positive.")
+    return order_size / total_volume
+
+
 def estimate_execution_price(bars: list[MinuteBar], order_size: int) -> float:
     if order_size <= 0:
         raise ValueError("Order size must be positive.")
@@ -85,6 +94,7 @@ def summarize_execution(bars: list[MinuteBar], order_size: int, side: str) -> di
         "vwap": round(vwap(bars), 4),
         "estimated_execution_price": round(execution_price, 4),
         "implementation_shortfall_bps": round(shortfall_bps, 4),
+        "participation_rate_pct": round(participation_rate(order_size, bars) * 100, 4),
     }
 
 
